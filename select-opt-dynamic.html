@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Belajar Javascript Select Option</title>
+</head>
+<body>
+  <p>Fakultas:
+    <select name="fakultas" id="fakultas">
+      <option value="FISIPOL">FISIPOL</option>
+      <option value="FE">FE</option>
+      <option value="FT">FT</option>
+      <option value="FKIP">FKIP</option>
+      <option value="FMIPA">FMIPA</option>
+    </select>
+  </p>
+  <p>
+    Jurusan :
+    <select name="jurusan" id="jurusan"></select>
+  </p>
+    <br><br>
+  <p> Pilihan Anda : <span id=hasil></span></p>
+
+  <script>
+    let fakultasNode = document.getElementById("fakultas");
+    let jurusanNode = document.getElementById("jurusan");
+    let hasilNode = document.getElementById("hasil");
+
+    let jurFISIPOL = "";
+    let jurFE = "";
+    let jurFT = "";
+    let jurFKIP = "";
+    let jurFMIPA = "";
+
+    function tampilkanJurusan(){
+      if(fakultasNode.value === "FISIPOL") {
+        jurFISIPOL = "<option value='Ilmu Hubungan Internasional'>Ilmu Hubungan Internasional</option>";
+        jurFISIPOL += "<option value='Ilmu Komunikasi'>Ilmu Komunikasi</option>";
+        jurFISIPOL += "<option value='Ilmu Politik'>Ilmu Politik</option>";
+        jurusanNode.innerHTML = jurFISIPOL;
+      }
+      if(fakultasNode.value === "FE") {
+        jurFE = "<option value='Manajemen'>Manajemen</option>";
+        jurFE += "<option value='Akuntansi'>Akuntansi</option>";
+        jurFE += "<option value='Manajemen Perpajakan'>Manajemen Perpajakan</option>";
+        jurusanNode.innerHTML = jurFE;
+      }
+      if(fakultasNode.value === "FT") {
+        jurFT = "<option value='Teknik Elektro'>Teknik Elektro</option>";
+        jurFT += "<option value='Teknik Mesin'>Teknik Mesin</option>";
+        jurFT += "<option value='Teknik Sipil'>Teknik Sipil</option>";
+        jurFT += "<option value='Arsitektur'>Arsitektur</option>";
+        jurusanNode.innerHTML = jurFT;
+      }
+      if(fakultasNode.value === "FKIP") {
+        jurFKIP = "<option value='Pendidikan Matematika'>Pendidikan Matematika</option>";
+        jurFKIP += "<option value='Pendidikan Biologi'>Pendidikan Biologi</option>";
+        jurFKIP += "<option value='Pendidikan Kimia'>Pendidikan Kimia</option>";
+        jurFKIP += "<option value='Pendidikan Fisika'>Pendidikan Fisika</option>";
+        jurFKIP += "<option value='Pendidikan Bahasa Mandarin'>Pendidikan Bahasa Mandarin</option>";
+        jurusanNode.innerHTML = jurFKIP;
+      }
+      if(fakultasNode.value === "FMIPA") {
+        jurFMIPA = "<option value='Matematika'>Matematika</option>";
+        jurFMIPA += "<option value='Biologi'>Biologi</option>";
+        jurFMIPA += "<option value='Kimia'>Kimia</option>";
+        jurFMIPA += "<option value='Fisika'>Fisika</option>";
+        jurusanNode.innerHTML = jurFMIPA;
+      }
+      tampilkanHasil();
+    }
+
+    function tampilkanHasil(){
+      hasilNode.innerHTML = "Fakultas " + fakultasNode.value + ", ";
+      hasilNode.innerHTML += "Jurusan " + jurusanNode.value;
+    }
+
+    window.addEventListener("load",tampilkanJurusan);
+    fakultasNode.addEventListener("change",tampilkanJurusan);
+    jurusanNode.addEventListener("change",tampilkanHasil);
+  </script>
+</body>
+</html>

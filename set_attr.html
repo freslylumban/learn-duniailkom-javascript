@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Belajar Javascript</title>
+  <style>
+    .active {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="judul" title="Sedang Belajar">Belajar Set Attribute</h1>
+
+  <button onclick="buttonAct()">Active</button>
+
+  <script>
+    let sebuahNode = document.getElementById("judul");
+
+    console.log(sebuahNode.getAttribute("id"));
+    console.log(sebuahNode.getAttribute("title"));
+
+    let buttonAct = function() {
+      sebuahNode.setAttribute("id", "judulArtikel");
+      sebuahNode.setAttribute("class", "active");
+    }
+
+  </script>
+</body>
+</html>

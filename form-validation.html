@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Belajar Javascript Select Option</title>
+  <style>
+    .error {
+      /* background-color: pink;
+      border: 1px solid red;
+      width: 300px;
+      text-align: center;
+      padding: 5px; */
+      color: red;
+      width: 300px;
+      text-align: center;
+      padding: 2px 10px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <form id="formKu" name="formKu" method="get" action="proses.php">
+    <!-- <p>Username: <input type="text" name="username" id="username" required pattern="[A-Z]{3}[0-9]{3}"></p> -->
+    <p>Username: <input type="text" name="username" id="username"><span id="usernameSpan"></span></p>
+    <!-- <p id="pesan"></p> -->
+    <p><input type="submit" name="submit" id="submit" value="Kirim Data"></p>
+  </form>
+
+  <script>
+    let formKuNode = document.getElementById("formKu");
+    let usernameNode = document.getElementById("username");
+    let usernameSpanNode = document.getElementById("usernameSpan")
+    // let pesanNode = document.getElementById("pesan");
+    
+    // function diProses(e){
+    //   if (usernameNode.value.trim() === ""){
+    //     pesanNode.innerHTML = "Username harus diisi";
+    //     pesanNode.className = "error";
+    //     e.preventDefault();
+    //   } else if (/\W/.test(usernameNode.value.trim())){
+    //     pesanNode.innerHTML = "Hanya bisa diisi karakter alfanumerik";
+    //     pesanNode.className = "error";
+    //     e.preventDefault();
+    //   } else if (usernameNode.value.trim().length < 6) {
+    //     pesanNode.innerHTML = "Minimal diisi 6 karakter";
+    //     pesanNode.className = "error";
+    //     e.preventDefault();
+    //   }
+    // }
+    // REFACTORING
+    function diProses(e){
+      let usernameError = "";
+
+      if (usernameNode.value.trim() === ""){
+        usernameError = "Username harus diisi";
+      } else if (/\W/.test(usernameNode.value.trim())){
+        usernameError = "Hanya bisa diisi karakter alfanumerik";
+      } else if (usernameNode.value.trim().length < 6) {
+        usernameError = "Minimal diisi 6 karakter";
+      }
+
+      if (usernameError !== "") {
+        // pesanNode.innerHTML = usernameError;
+        // pesanNode.className = "error";
+        // e.preventDefault();
+        usernameSpanNode.innerHTML = usernameError;
+        usernameSpanNode.className = "error";
+        usernameNode.style.border = "2px solid red";
+        e.preventDefault();
+      }
+    }
+
+    function hapusError(e){
+      e.target.style.border = "";
+      e.target.parentElement.lastChild.innerHTML = "";
+    }
+
+    formKuNode.addEventListener("submit",diProses);
+    usernameNode.addEventListener("focus",hapusError);
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> Belajar JavaScript </title>
+</head>
+<body>
+  <form id="formKu" name="formKu" method="get" action="proses.php">
+    <p>Username: <input type="text" name="username" id="username"></p>
+    <p>Password: <input type="password" id="password"></p>
+    <p><button id="tombol">Tampilkan password</button></p>
+    <p><input type="submit" name="submit" id="submit" value="Submit Form"></p>
+  </form>
+  <span>Hasil: <span id="hasil"></span></p>
+  <!-- <p>Hasil: <input type="text" id="hasil"></p> -->
+
+  <script>
+    var formNode = document.getElementById("formKu");
+    var usernameNode = document.getElementById("username");
+    var hasilNode = document.getElementById("hasil");
+    function diProses(e){
+      e.preventDefault();
+      hasilNode.innerHTML = usernameNode.value;
+      // hasilNode.value = usernameNode.value;
+      hasilNode.disabled = "true";
+    }
+    function diFocus(e){
+      e.target.style.border = "2px solid aqua";
+    }
+    function diBlur(e){
+      e.target.style.border = "2px solid red";
+    }
+    formNode.addEventListener("submit",diProses);
+    usernameNode.addEventListener("focus",diFocus);
+    usernameNode.addEventListener("blur",diBlur);
+
+    var passwordNode = document.getElementById("password");
+    var tombolPassNode = document.getElementById("tombol");
+
+    function proses(){
+      if (passwordNode.type === "password"){
+        passwordNode.type = "text";
+        tombolPassNode.innerHTML = "Sembunyikan password";
+      }
+      else {
+        passwordNode.type = "password";
+        tombolPassNode.innerHTML = "Tampilkan password";
+      }
+    }
+    tombolPassNode.addEventListener("click",proses);
+  </script>
+</body>
+</html>
